@@ -43,7 +43,9 @@ public class AlienController {
     @FXML
     void doTranslate(ActionEvent event) {
    
-    	
+    	    //Gestisto il caso senza "?"
+    	    if (!txtWord.getText().contains("?")) {
+    	    
     	    if (txtWord.getText().contains(" ")){
     		String parole[] = txtWord.getText().split(" ");
     		
@@ -73,6 +75,47 @@ public class AlienController {
     	    else txtResult.appendText("Formato dell'input non valido!\n");
     	
     	txtWord.clear();
+    	    }
+    	    
+    	    //Gestione dell'esercizio opzionale
+    	    else {
+    	      
+    	    	String parola = txtWord.getText().trim();
+    	    	
+    	    	//Se il "?" è ad inizio parola
+    	    	if (parola.substring(0, 1).compareTo("?")==0) {
+    	    		parola = parola.substring(1,parola.length());
+    	    		for (Word w : A.getDictionary()) {
+    	    			if ( w.getAlienWord().substring(1, w.getAlienWord().length()).compareTo(parola)==0 )
+    	    				txtResult.appendText(w.getTranslation());
+    	    		}
+    	    	}
+    	    	
+    	    	//Se il "?" è ad fine parola parola
+    	    	if (parola.substring(parola.length()-1, parola.length()).compareTo("?")==0) {
+    	    		parola = parola.substring(0,parola.length()-1);
+    	    		
+    	    		for (Word w : A.getDictionary()) {
+    	    			if ( w.getAlienWord().substring(0, w.getAlienWord().length()-1).compareTo(parola)==0 )
+    	    				txtResult.appendText(w.getTranslation());
+    	    		}
+    	    	}
+    	    	
+    	    	//Se il "?" è in mezzo
+    	    	else {
+    	    		parola=parola.replace("?", "-");
+    	    		String array[] = parola.split("-");
+    	    		
+    	    		String uno = array[0];
+    	    		String due = array[1];
+    	    		
+    	    		for (Word w : A.getDictionary()) {
+    	    			if (w.getAlienWord().contains(uno) && w.getAlienWord().contains(due))
+    	    				txtResult.appendText(w.getTranslation()+"\n");
+    	    		}
+    	    	}
+    	    	txtWord.clear();
+    	    }
     }
     
     
