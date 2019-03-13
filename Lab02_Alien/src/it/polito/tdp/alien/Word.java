@@ -21,8 +21,8 @@ public class Word {
 	 */
 	public boolean equals (Object obj) {
 		//Cast
-		String s = obj.toString();
-		if (this.alienWord.compareTo(s)==0) return true;
+		Word s = (Word)obj;
+		if (this.alienWord.compareTo(s.getAlienWord())==0) return true;
 		else return false;
 		}
 

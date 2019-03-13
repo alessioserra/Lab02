@@ -42,24 +42,35 @@ public class AlienController {
     
     @FXML
     void doTranslate(ActionEvent event) {
+   
     	
-    	if (txtWord.getText().contains(" ")){
+    	    if (txtWord.getText().contains(" ")){
     		String parole[] = txtWord.getText().split(" ");
     		
     		String alienWord = parole[0];
     		String translation = parole[1];
     		
+    		//Controllo sull'input di 2 parole (DEVE essere alfanumerico)
+    		if (alienWord.matches("[a-zA-Z]+") && translation.matches("[a-zA-Z]+")) {	
+    			
     		A.addWord(alienWord, translation);
     		txtResult.setText("Parola aggiunta al dizionario");
+    		}
+    		
+    		else txtResult.setText("Formato dell'input non valido!");
     	}
 
-    	else {
+    	//Controllo sull'input di 1 parola
+    	    else if (txtWord.getText().matches("[a-zA-Z]+")){
     		String risultato = A.translateWord(txtWord.getText().toLowerCase());
     		
     		if (risultato==null) txtResult.setText("Parola non presente nel dizionario!");
     		
     		else txtResult.setText(risultato);
-    	}
+    	    }
+    	
+    	    //altrimenti errore sull'input
+    	    else txtResult.setText("Formato dell'input non valido!");
     	
     	txtWord.clear();
     }
