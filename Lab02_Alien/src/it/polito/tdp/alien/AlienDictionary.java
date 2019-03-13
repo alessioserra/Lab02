@@ -3,20 +3,20 @@ import java.util.*;
 
 public class AlienDictionary {
 	
-    LinkedList<Word> dictionary = new LinkedList<Word>();
-	TreeMap<String,Word> mappa = new TreeMap<String,Word>();
+    LinkedList<WordEnhanced> dictionary = new LinkedList<WordEnhanced>();
+	TreeMap<String,WordEnhanced> mappa = new TreeMap<String,WordEnhanced>();
 	
     //Costruttore
 	public AlienDictionary() {
 	}
 
     //Getter and Setter
-	public List<Word> getDictionary() {
+	public List<WordEnhanced> getDictionary() {
 		return dictionary;
 	}
 
-	public void setDictionary(List<Word> dictionary) {
-		this.dictionary = (LinkedList<Word>) dictionary;
+	public void setDictionary(List<WordEnhanced> dictionary) {
+		this.dictionary = (LinkedList<WordEnhanced>) dictionary;
 	}
 
 	/** 
@@ -31,12 +31,12 @@ public class AlienDictionary {
 		String t = translation.toLowerCase();
 		
 		//Creo oggetto Word
-		Word w = new Word(aw,t);
+		WordEnhanced w = new WordEnhanced(aw,t);
 		
 		//Controllo che AlienWord 
 		if (mappa.containsKey(aw)) {
 			
-			Word w_old = mappa.get(aw);
+			WordEnhanced w_old = mappa.get(aw);
 			mappa.replace(aw, w);
 			
 			dictionary.remove(w_old);

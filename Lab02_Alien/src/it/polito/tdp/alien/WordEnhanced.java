@@ -1,12 +1,12 @@
 package it.polito.tdp.alien;
 
-public class Word {
+public class WordEnhanced {
 	
 	private String alienWord;
 	private String translation;
 	
 	//Costruttore
-	public Word(String alienWord, String translation) {
+	public WordEnhanced(String alienWord, String translation) {
 		
 		alienWord=alienWord.toLowerCase();
 		translation=translation.toLowerCase();
@@ -21,7 +21,7 @@ public class Word {
 	 */
 	public boolean equals (Object obj) {
 		//Cast
-		Word s = (Word)obj;
+		WordEnhanced s = (WordEnhanced)obj;
 		if (this.alienWord.compareTo(s.getAlienWord())==0) return true;
 		else return false;
 		}
