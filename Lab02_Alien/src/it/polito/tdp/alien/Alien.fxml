@@ -39,7 +39,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtInput" promptText="Insert the text...">
+                  <TextField fx:id="txtWord" promptText="Insert the text...">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
@@ -47,7 +47,7 @@
                         <Font size="13.0" />
                      </font>
                   </TextField>
-                  <Button fx:id="handleTranslate" mnemonicParsing="false" onAction="#doTranslate" text="Translate">
+                  <Button fx:id="btnTranslate" mnemonicParsing="false" onAction="#doTranslate" text="Translate">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
@@ -67,7 +67,7 @@
             </HBox>
             <HBox prefHeight="400.0" prefWidth="200.0">
                <children>
-                  <TextArea fx:id="txtMessaggi" editable="false" prefHeight="100.0" prefWidth="503.0" text="Welcome to Alien Dictionary v2019.">
+                  <TextArea fx:id="txtResult" editable="false" prefHeight="100.0" prefWidth="503.0" text="Welcome to Alien Dictionary v2019.">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -76,7 +76,7 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT">
                <children>
-                  <Button fx:id="handleClearText" mnemonicParsing="false" onAction="#doClearText" text="Clear Text">
+                  <Button fx:id="btnReset" mnemonicParsing="false" onAction="#doReset" text="Clear Text">
                      <HBox.margin>
                         <Insets right="8.0" top="15.0" />
                      </HBox.margin>
