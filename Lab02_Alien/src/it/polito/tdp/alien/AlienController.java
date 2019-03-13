@@ -54,23 +54,23 @@ public class AlienController {
     		if (alienWord.matches("[a-zA-Z]+") && translation.matches("[a-zA-Z]+")) {	
     			
     		A.addWord(alienWord, translation);
-    		txtResult.setText("Parola aggiunta al dizionario");
+    		txtResult.appendText("Parola aggiunta al dizionario\n");
     		}
     		
-    		else txtResult.setText("Formato dell'input non valido!");
+    		else txtResult.appendText("Formato dell'input non valido!\n");
     	}
 
     	//Controllo sull'input di 1 parola
     	    else if (txtWord.getText().matches("[a-zA-Z]+")){
     		String risultato = A.translateWord(txtWord.getText().toLowerCase());
     		
-    		if (risultato==null) txtResult.setText("Parola non presente nel dizionario!");
+    		if (risultato==null) txtResult.appendText("Parola non presente nel dizionario!\n");
     		
-    		else txtResult.setText(risultato);
+    		else txtResult.appendText(risultato+"\n");
     	    }
     	
     	    //altrimenti errore sull'input
-    	    else txtResult.setText("Formato dell'input non valido!");
+    	    else txtResult.appendText("Formato dell'input non valido!\n");
     	
     	txtWord.clear();
     }
