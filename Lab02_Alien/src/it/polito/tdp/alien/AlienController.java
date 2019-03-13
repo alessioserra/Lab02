@@ -4,8 +4,6 @@ package it.polito.tdp.alien;
  * Sample Skeleton for 'Alien.fxml' Controller Class
  */
 
-
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -40,16 +38,39 @@ public class AlienController {
     	
     }
   
+    AlienDictionary A = new AlienDictionary();
     
     @FXML
     void doTranslate(ActionEvent event) {
-    	    	
+    	
+    	if (txtWord.getText().contains(" ")){
+    		String parole[] = txtWord.getText().split(" ");
+    		
+    		String alienWord = parole[0];
+    		String translation = parole[1];
+    		
+    		A.addWord(alienWord, translation);
+    		txtResult.setText("Parola aggiunta al dizionario");
+    	}
+
+    	else {
+    		String risultato = A.translateWord(txtWord.getText().toLowerCase());
+    		
+    		if (risultato==null) txtResult.setText("Parola non presente nel dizionario!");
+    		
+    		else txtResult.setText(risultato);
+    	}
+    	
+    	txtWord.clear();
     }
     
     
     @FXML
     void doReset(ActionEvent event) {
 
+    	txtWord.clear();
+    	txtResult.clear();
+    	
     }
     
 }
