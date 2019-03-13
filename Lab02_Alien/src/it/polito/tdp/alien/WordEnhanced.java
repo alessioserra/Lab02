@@ -1,18 +1,17 @@
 package it.polito.tdp.alien;
+import java.util.*;
 
 public class WordEnhanced {
 	
 	private String alienWord;
-	private String translation;
+	private LinkedList<String> translation = new LinkedList<String>();
 	
 	//Costruttore
-	public WordEnhanced(String alienWord, String translation) {
+	public WordEnhanced(String alienWord,String translation) {
 		
-		alienWord=alienWord.toLowerCase();
-		translation=translation.toLowerCase();
-		
+		alienWord=alienWord.toLowerCase();	
 		this.alienWord = alienWord;
-		this.translation = translation;
+		this.translation.add(translation);
 	}
 	
 	/**
@@ -34,12 +33,10 @@ public class WordEnhanced {
 	public void setAlienWord(String alienWord) {
 		this.alienWord = alienWord;
 	}
-
-	public String getTranslation() {
+	
+	public LinkedList<String> getTranslation() {
 		return translation;
 	}
 
-	public void setTranslation(String translation) {
-		this.translation = translation;
-	}
+	
 }

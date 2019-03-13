@@ -35,14 +35,12 @@ public class AlienDictionary {
 		
 		//Controllo che AlienWord 
 		if (mappa.containsKey(aw)) {
-			
 			WordEnhanced w_old = mappa.get(aw);
-			mappa.replace(aw, w);
 			
-			dictionary.remove(w_old);
-			dictionary.add(w);
-			
-			System.out.println("Parola aggiornata");
+			if (!w_old.getTranslation().contains(t)) {
+				w_old.getTranslation().add(t);
+			    System.out.println("Aggiunta ulteriore traduzione alla parola aliena");
+			}
 		}
 		
 		else {
@@ -53,8 +51,17 @@ public class AlienDictionary {
 	
 	public String translateWord(String alienWord) {
 		
+		String r="";
+		
 		String aw = alienWord.toLowerCase();
-		if (mappa.containsKey(aw)) return mappa.get(aw).getTranslation();
+		if (mappa.containsKey(aw)) {
+			for (String s : mappa.get(aw).getTranslation()) {
+				r=r+s+" ";
+			}
+		return r;
+		}
+		
+		
 		return null;
 		
 	}
