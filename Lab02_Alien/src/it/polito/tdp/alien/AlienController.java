@@ -87,7 +87,7 @@ public class AlienController {
     	    		parola = parola.substring(1,parola.length());
     	    		for (Word w : A.getDictionary()) {
     	    			if ( w.getAlienWord().substring(1, w.getAlienWord().length()).compareTo(parola)==0 )
-    	    				txtResult.appendText(w.getTranslation());
+    	    				txtResult.appendText(w.getTranslation()+"\n");
     	    		}
     	    	}
     	    	
@@ -97,12 +97,15 @@ public class AlienController {
     	    		
     	    		for (Word w : A.getDictionary()) {
     	    			if ( w.getAlienWord().substring(0, w.getAlienWord().length()-1).compareTo(parola)==0 )
-    	    				txtResult.appendText(w.getTranslation());
+    	    				txtResult.appendText(w.getTranslation()+"\n");
     	    		}
     	    	}
     	    	
     	    	//Se il "?" è in mezzo
     	    	else {
+    	    		
+    	    		int flag = parola.indexOf("?");
+    	    		
     	    		parola=parola.replace("?", "-");
     	    		String array[] = parola.split("-");
     	    		
@@ -110,7 +113,11 @@ public class AlienController {
     	    		String due = array[1];
     	    		
     	    		for (Word w : A.getDictionary()) {
-    	    			if (w.getAlienWord().contains(uno) && w.getAlienWord().contains(due))
+    	    			
+    	    			String uno1 = w.getAlienWord().substring(0, flag);
+    	    			String due2 = w.getAlienWord().substring(flag+1, w.getAlienWord().length());
+    	    			
+    	    			if (uno.compareTo(uno1)==0 && due.compareTo(due2)==0)
     	    				txtResult.appendText(w.getTranslation()+"\n");
     	    		}
     	    	}
